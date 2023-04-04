@@ -9,7 +9,7 @@ import numpy as np
 from activation import linear, sigmoid, ReLU, softmax
 
 class Layer:
-	def __init__(self, n_neuron, activation, X=None, weights=None, bias=None):
+	def __init__(self, n_neuron, activation, X=None, Y=None, weights=None, bias=None):
 		activations = {
 			'linear': linear,
 			'sigmoid': sigmoid,
@@ -24,6 +24,7 @@ class Layer:
 		else:
 			self.n_neuron = n_neuron
 			self.X = X
+			self.Y = Y
 			self.weights = weights
 			self.bias = bias
 			self.activation = activations[activation]
