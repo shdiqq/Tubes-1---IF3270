@@ -19,10 +19,10 @@ def generate_model(filename):
 	for layer in model_data:
 		typeLayer = model_data[str(layer)]
 		if (str(layer) == 'input_layer') :
-			ffnn.add_layer(str(layer), n_neuron=int(typeLayer['n_neuron']), X=np.array(typeLayer['X']), weights=None, bias=np.array(typeLayer['bias']), activation=typeLayer['activation'])
+			ffnn.add_layer( str(layer), n_neuron=int(typeLayer['n_neuron']), activation=typeLayer['activation'], X=np.array(typeLayer['X']), weights=None, bias=np.array(typeLayer['bias']) )
 		elif (str(layer) == 'hidden_layer') :
-			ffnn.add_layer(str(layer), n_neuron=int(typeLayer['n_neuron']), X=None, weights=np.array(typeLayer['weights']), bias=np.array(typeLayer['bias']), activation=typeLayer['activation'])
+			ffnn.add_layer( str(layer), n_neuron=int(typeLayer['n_neuron']), activation=typeLayer['activation'], X=None, weights=np.array(typeLayer['weights']), bias=np.array(typeLayer['bias']) )
 		elif (str(layer) == 'output_layer') :
-			ffnn.add_layer(str(layer), n_neuron=int(typeLayer['n_neuron']), X=None, weights=np.array(typeLayer['weights']), bias=None, activation=typeLayer['activation'])
+			ffnn.add_layer( str(layer), n_neuron=int(typeLayer['n_neuron']), activation=typeLayer['activation'], X=None, weights=np.array(typeLayer['weights']), bias=None )
 
 	return ffnn
