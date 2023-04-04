@@ -5,7 +5,6 @@ script_dir = os.path.dirname( __file__ )
 mymodule_dir = os.path.join( script_dir, '..', 'function')
 sys.path.append( mymodule_dir )
 
-import numpy as np
 from activation import linear, sigmoid, ReLU, softmax
 
 class Layer:
