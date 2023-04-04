@@ -1,0 +1,30 @@
+{
+  "input_layer": {
+    "n_neuron": "2",
+    "activation": "linear",
+    "X": [
+      [0, 0],
+      [0, 1],
+      [1, 0],
+      [1, 1]
+    ],
+    "bias": [-10, 30]
+  },
+  "hidden_layer": {
+    "n_neuron": "2",
+    "activation": "sigmoid",
+    "weights": [
+      [20, -20],
+      [20, -20]
+    ],
+    "bias": [-30]
+  },
+  "output_layer": {
+    "n_neuron": "1",
+    "activation": "sigmoid",
+    "weights": [
+      [20], 
+      [20]
+    ]
+  }
+}

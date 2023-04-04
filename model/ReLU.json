@@ -1,0 +1,30 @@
+{
+  "input_layer": {
+    "n_neuron": "2",
+    "activation": "linear",
+    "X": [
+      [0, 0],
+      [0, 1],
+      [1, 0],
+      [1, 1]
+    ],
+    "bias": [0, -1]
+  },
+  "hidden_layer": {
+    "n_neuron": "2",
+    "activation": "ReLU",
+    "weights": [
+      [1, 1],
+      [1, 1]
+    ],
+    "bias": [0]
+  },
+  "output_layer": {
+    "n_neuron": "1",
+    "activation": "ReLU",
+    "weights": [
+      [1], 
+      [-2]
+    ]
+  }
+}
