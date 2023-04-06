@@ -8,7 +8,7 @@ def sigmoid(x):
   """Fungsi aktivasi sigmoid"""
   return (1 / (1 + np.exp(-x)))
 
-def ReLU(x):
+def relu(x):
   """Fungsi aktivasi ReLU"""
   return (np.maximum(0, x))
 

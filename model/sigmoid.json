@@ -1,36 +1,25 @@
 {
-  "input_layer": {
-    "n_neuron": "2",
-    "activation": "linear",
-    "X": [
-      [0, 0],
-      [0, 1],
-      [1, 0],
-      [1, 1]
-    ],
-    "Y": [
-      [0],
-      [1],
-      [1],
-      [0]
-    ],
-    "bias": [-10, 30]
-  },
-  "hidden_layer": {
-    "n_neuron": "2",
-    "activation": "sigmoid",
+  "case": {
+    "model": {
+      "input_size": 2,
+      "layers": [
+        {
+          "number_of_neurons": 3,
+          "activation_function": "sigmoid"
+        }
+      ]
+    },
+    "input": [[0.2, 0.4]],
     "weights": [
-      [20, -20],
-      [20, -20]
-    ],
-    "bias": [-30]
-  },
-  "output_layer": {
-    "n_neuron": "1",
-    "activation": "sigmoid",
-    "weights": [
-      [20], 
-      [20]
+      [
+        [0.4, 0.2, 0.1],
+        [0.2, 0.4, 0.2],
+        [0.1, 0.2, 0.4]
+      ]
     ]
+  },
+  "expect": {
+    "output": [[0.617747], [0.58904], [0.574442]],
+    "max_sse": 0.000001
   }
 }
