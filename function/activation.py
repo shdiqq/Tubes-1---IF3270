@@ -1,17 +1,32 @@
 import numpy as np
 
-def linear(x):
-  """Fungsi aktivasi linear"""
-  return (x)
+# ACTIVATION FUNCTION
+def linear(net: float, derivative: bool = False) -> float:
+	if (derivative) :
+		return(1)
+	else :
+		return (net)
 
-def sigmoid(x):
-  """Fungsi aktivasi sigmoid"""
-  return (1 / (1 + np.exp(-x)))
+def sigmoid(net: float, derivative: bool = False) -> float:
+	if (derivative) :
+		return ( (1 / (1 + np.exp(-net)) ) * ( 1 - (1 / (1 + np.exp(-net))) ) )
+	else :
+		return ( 1 / (1 + np.exp(-net) ) )
 
-def relu(x):
-  """Fungsi aktivasi ReLU"""
-  return (np.maximum(0, x))
+def relu(net: float, derivative: bool = False) -> float:
+	if (derivative) :
+		if ( net  < 0 ) :
+			return(0)
+		else :
+			return(1)
+	else :
+		return (np.maximum(0, net))
 
-def softmax(x):
-  """Fungsi aktivasi softmax"""
-  return (np.exp(x) / np.sum(np.exp(x)))
+def softmax(net: float, sumNetInEveryNeuron, derivative: bool = False) -> float:
+	sigma = 0
+	for i in range (len(sumNetInEveryNeuron)):
+		sigma = sigma + np.exp(sumNetInEveryNeuron[i])
+	if (derivative) :
+		return (np.exp(net) / sigma) * (1 - (np.exp(net) / sigma))
+	else :
+		return (np.exp(net) / sigma)

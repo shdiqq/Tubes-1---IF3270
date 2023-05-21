@@ -1,33 +1,32 @@
 from function.generateModel import generate_model
-import numpy as np
 
-while True :
-  model = str(input("Masukkan model yang ingin digunakan (Silakan cek nama file yang ada pada folder model): "))
+quit = False
 
-  if (model == 'relu'):
-    break
-  elif (model == 'sigmoid'):
-    break
-  elif (model == 'softmax'):
-    break
-  elif (model == 'linear'):
-    break
-  elif (model == 'multilayer'):
-    break
-  else :
-    print("Input yang diberikan salah")
+while (not quit):
 
-ffnn = generate_model(filename=f"model/{model}.json")
+  while True :
+    model = str(input("Masukkan model yang ingin digunakan (Silakan cek nama file yang ada pada folder model): "))
+    filePath = f"model/{model}.json"
+    ffnn = generate_model(filePath)
 
-while True :
-  n_instance = str(input("Masukkan jumlah instance yang akan diprediksi: "))
+    if (ffnn == False):
+        print("File tidak ditemukan pada folder model! Pastikan file yang diinput sudah berada pada folder tersebut!")
+    else :
+      break
 
-  if (int(n_instance) <= len(ffnn.input_layer[0].input_data) and int(n_instance) >= 1):
-    print("=========================================================")
-    break
-  else :
-    print("Input yang diberikan salah")
+  ffnn.information()
+  ffnn.forward_propagation()
+  ffnn.accuracy()
+  ffnn.visualize()
 
-ffnn.forward_propagation(int(n_instance))
-ffnn.printListActivationValue()
-ffnn.accuracy()
+  print("Apakah anda ingin keluar? (Y/N)")
+  while (True):
+    inputUser = input(">>> ")
+    if (inputUser.upper() == 'Y'):
+      print("Keluar dari program...")
+      quit = True
+      break
+    elif (inputUser.upper() == 'N'):
+      break
+    else:
+      print("input anda salah! Lakukan input kembali")

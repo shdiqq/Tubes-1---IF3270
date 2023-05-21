@@ -6,23 +6,31 @@ mymodule_dir = os.path.join( script_dir, '..', 'function')
 sys.path.append( mymodule_dir )
 
 from activation import linear, sigmoid, relu, softmax
+from node import Node
 
 class Layer:
-	def __init__(self, input_size, n_neuron, activation, input_data, weights, bias, output, max_sse):
-		activations = {
+	def __init__(self, n_neuron, activation_function_name, weights, bias):
+		activation_function = {
 			'linear': linear,
 			'sigmoid': sigmoid,
 			'relu': relu,
 			'softmax': softmax,
 			'None' : None
 		}
-
-		self.input_size = input_size
 		self.n_neuron = n_neuron
-		self.activation = activations[activation]
-		self.input_data = input_data
+		self.activation_function_name = activation_function_name
+		self.activation_function = activation_function[activation_function_name]
+		self.activation_function_value = []
 		self.weights = weights
 		self.bias = bias
-		self.output = output
-		self.max_sse = max_sse
-		self.activation_value = None
+		self.net = []
+		self.nodes = []
+		self.generate_nodes()
+
+	def generate_nodes(self):
+		for i in range(self.n_neuron):
+			thisWeight = []
+			for j in range(len(self.weights)):
+				thisWeight.append(self.weights[j][i])
+			node = Node(self.bias[i], thisWeight, self.activation_function_name, self.activation_function)
+			self.nodes.append(node)
